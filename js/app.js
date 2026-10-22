@@ -3753,6 +3753,8 @@
     // 知识点→可视化
     vizFromTpl,
     vizFromCat,
+    // 在线升级
+    checkUpdateNow,
     // Dijkstra控制
     dijkstraPlay,
     dijkstraPause,
@@ -4178,6 +4180,77 @@
   function idpRandom() { intervalDPState.data = genVizData(5); idpReset(); }
 
   // ============================ 初始化 ============================
+  // ============================ 在线升级检测 ============================
+  const REPO_API = 'https://api.github.com/repos/Peter1384345/csp-s-2026-pro/commits/main';
+  let currentSha = null;
+  let versionCheckTimer = null;
+
+  async function fetchLatestCommit() {
+    try {
+      const res = await fetch(REPO_API, { cache: 'no-store' });
+      if (!res.ok) return null;
+      const data = await res.json();
+      return { sha: data.sha, date: data.commit?.author?.date || '', msg: data.commit?.message || '' };
+    } catch (e) { return null; }
+  }
+
+  function shortenSha(sha) { return sha ? sha.substring(0, 7) : '------'; }
+
+  function initVersionChecker() {
+    // 首次加载：获取当前版本作为基准
+    fetchLatestCommit().then(info => {
+      if (!info) return;
+      currentSha = info.sha;
+      // 存储到 sessionStorage 作为本次会话的基准版本
+      try { sessionStorage.setItem('csp_base_sha', info.sha); } catch (e) {}
+      updateVersionBadge(info);
+    });
+
+    // 每 5 分钟检查一次是否有新提交
+    versionCheckTimer = setInterval(checkForUpdate, 5 * 60 * 1000);
+    // 首次 30 秒后也检查一次（处理部署刚完成的场景）
+    setTimeout(checkForUpdate, 30000);
+  }
+
+  async function checkForUpdate() {
+    const info = await fetchLatestCommit();
+    if (!info) return;
+    const baseSha = currentSha || (sessionStorage.getItem('csp_base_sha') || null);
+    if (baseSha && info.sha !== baseSha) {
+      showUpdateNotification(info);
+    }
+    updateVersionBadge(info);
+  }
+
+  function updateVersionBadge(info) {
+    const badge = $('#version-badge');
+    if (badge && info) {
+      const d = info.date ? new Date(info.date).toLocaleString('zh-CN', { month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' }) : '';
+      badge.textContent = `v${shortenSha(info.sha)} · ${d}`;
+      badge.title = info.msg || '';
+    }
+  }
+
+  function showUpdateNotification(info) {
+    if ($('#update-notify')) return;
+    const notify = document.createElement('div');
+    notify.id = 'update-notify';
+    notify.className = 'update-notify';
+    notify.innerHTML = `
+      <span class="un-icon">✨</span>
+      <span class="un-text">发现新版本 <b>v${shortenSha(info.sha)}</b>，点击刷新获取最新内容</span>
+      <button class="un-btn" onclick="location.reload()">立即刷新</button>
+      <button class="un-close" onclick="this.parentElement.remove()">×</button>
+    `;
+    document.body.appendChild(notify);
+    // 入场动画
+    requestAnimationFrame(() => notify.classList.add('show'));
+  }
+
+  function checkUpdateNow() {
+    checkForUpdate();
+  }
+
   function init() {
     // 加载主题
     loadTheme();
@@ -4233,6 +4306,9 @@
     // 路由
     window.addEventListener('hashchange', render);
     render();
+
+    // 在线升级检测
+    initVersionChecker();
 
     // 快速面板
     renderQuickPanel();

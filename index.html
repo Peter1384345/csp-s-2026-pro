@@ -72,6 +72,10 @@
     <button id="cd-timer-btn" class="cd-timer-btn" onclick="CSP.toggleTimer()">开始计时</button>
     <button class="cd-timer-btn danger" onclick="CSP.resetTimer()" style="font-size:11px;padding:4px 8px;">重置</button>
   </div>
+  <div class="version-info">
+    <span id="version-badge" class="version-badge" title="点击检查更新" onclick="CSP.checkUpdateNow()">v------ · --</span>
+    <button class="cd-timer-btn" onclick="CSP.checkUpdateNow()" style="font-size:11px;padding:4px 8px;">⟳ 检查更新</button>
+  </div>
 </div>
 
 <!-- ============================ 主内容区 ============================ -->
@@ -102,6 +106,7 @@
   <a onclick="CSP.go('dpviz')">🧠 DP可视化</a>
   <a onclick="CSP.go('exam')">📝 模拟考试</a>
   <a onclick="CSP.go('strategy')">🎯 考场策略</a>
+  <a onclick="CSP.checkUpdateNow()" style="color:var(--cyan);">✨ 检查更新</a>
   <a onclick="CSP.toggleQuickPanel()" style="color:var(--text-3);">✕ 关闭</a>
 </div>
 
