@@ -8,8 +8,8 @@
   <link rel="stylesheet" href="css/theme.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230a0f1c'/><text x='50' y='68' font-size='48' font-weight='bold' text-anchor='middle' fill='%2322e6ff' font-family='monospace'>S</text></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='8' fill='%231a1a24'/><text x='50' y='68' font-size='48' font-weight='bold' text-anchor='middle' fill='%23e8a838' font-family='monospace'>S</text></svg>">
 </head>
 <body>
 
@@ -56,7 +56,7 @@
   <div class="nav-right">
     <button class="theme-toggle" id="theme-toggle" onclick="CSP.toggleTheme()" title="切换主题">🌙</button>
     <div class="nav-search">
-      <span class="ic">🔍</span>
+      <span class="ic">⌕</span>
       <input id="nav-search-input" type="text" placeholder="搜索模板/知识点...">
     </div>
   </div>
@@ -87,25 +87,25 @@
 <button id="quick-toggle" class="quick-panel-toggle" onclick="CSP.toggleQuickPanel()">≡</button>
 <div id="quick-panel" class="quick-panel hidden">
   <h4>快速跳转</h4>
-  <a onclick="CSP.go('home')">🏠 首页</a>
-  <a onclick="CSP.go('templates')">📋 模板速查</a>
-  <a onclick="CSP.go('templates#基础算法')">⚡ 基础算法</a>
-  <a onclick="CSP.go('templates#图论')">🌐 图论</a>
-  <a onclick="CSP.go('templates#树论')">🌲 树论</a>
-  <a onclick="CSP.go('templates#动态规划')">📊 动态规划</a>
-  <a onclick="CSP.go('templates#数学')">🔢 数学</a>
-  <a onclick="CSP.go('templates#字符串')">📝 字符串</a>
-  <a onclick="CSP.go('templates#数据结构')">🏗️ 数据结构</a>
-  <a onclick="CSP.go('templates#考试模板')">📋 考试模板</a>
-  <a onclick="CSP.go('starmap')">🌟 知识星图</a>
+  <a onclick="CSP.go('home')">HM 首页</a>
+  <a onclick="CSP.go('templates')">EX 模板速查</a>
+  <a onclick="CSP.go('templates#基础算法')">AL 基础算法</a>
+  <a onclick="CSP.go('templates#图论')">GR 图论</a>
+  <a onclick="CSP.go('templates#树论')">TR 树论</a>
+  <a onclick="CSP.go('templates#动态规划')">DP 动态规划</a>
+  <a onclick="CSP.go('templates#数学')">MA 数学</a>
+  <a onclick="CSP.go('templates#字符串')">ST 字符串</a>
+  <a onclick="CSP.go('templates#数据结构')">DS 数据结构</a>
+  <a onclick="CSP.go('templates#考试模板')">EX 考试模板</a>
+  <a onclick="CSP.go('starmap')">★ 知识星图</a>
   <a onclick="CSP.go('flashcard')">🃏 闪卡测验</a>
-  <a onclick="CSP.go('progress')">📈 学习进度</a>
-  <a onclick="CSP.go('complexity')">⚡ 复杂度速查</a>
-  <a onclick="CSP.go('visualizer')">🎬 算法可视化</a>
-  <a onclick="CSP.go('dataviz')">📦 数据结构</a>
-  <a onclick="CSP.go('dpviz')">🧠 DP可视化</a>
-  <a onclick="CSP.go('exam')">📝 模拟考试</a>
-  <a onclick="CSP.go('strategy')">🎯 考场策略</a>
+  <a onclick="CSP.go('progress')">PR 学习进度</a>
+  <a onclick="CSP.go('complexity')">AL 复杂度速查</a>
+  <a onclick="CSP.go('visualizer')">VZ 算法可视化</a>
+  <a onclick="CSP.go('dataviz')">DS 数据结构</a>
+  <a onclick="CSP.go('dpviz')">DP DP可视化</a>
+  <a onclick="CSP.go('exam')">ST 模拟考试</a>
+  <a onclick="CSP.go('strategy')">EX 考场策略</a>
   <a onclick="CSP.checkUpdateNow()" style="color:var(--cyan);">✨ 检查更新</a>
   <a onclick="CSP.toggleQuickPanel()" style="color:var(--text-3);">✕ 关闭</a>
 </div>

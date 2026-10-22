@@ -12,8 +12,8 @@
 
   // ============================ 共享常量 ============================
   const CAT_ICONS = {
-    '基础算法': '⚡', '图论': '🌐', '树论': '🌲', '动态规划': '📊',
-    '数学': '🔢', '字符串': '📝', '数据结构': '🏗️', '考试模板': '📋'
+    '基础算法': 'AL', '图论': 'GR', '树论': 'TR', '动态规划': 'DP',
+    '数学': 'MA', '字符串': 'ST', '数据结构': 'DS', '考试模板': 'EX'
   };
 
   // ============================ 状态 ============================
@@ -177,7 +177,7 @@
         // 绘制粒子
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(34, 230, 255, 0.6)';
+        ctx.fillStyle = 'rgba(232,168,56, 0.6)';
         ctx.fill();
 
         // 连线
@@ -189,7 +189,7 @@
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(q.x, q.y);
-            ctx.strokeStyle = `rgba(34, 230, 255, ${0.15 * (1 - d / 100)})`;
+            ctx.strokeStyle = `rgba(232,168,56, ${0.15 * (1 - d / 100)})`;
             ctx.lineWidth = 0.5;
             ctx.stroke();
           }
@@ -465,7 +465,7 @@
       html += `
       <div class="category" id="cat-${cat}">
         <div class="category-header">
-          <span class="cat-icon" style="background:rgba(34,230,255,.1);color:var(--cyan);">${CAT_ICONS[cat]||'📌'}</span>
+          <span class="cat-icon" style="background:rgba(232,168,56,.1);color:var(--cyan);">${CAT_ICONS[cat]||'•'}</span>
           ${cat}
           <span class="cat-count">${items.length} 个模板</span>
         </div>
@@ -528,7 +528,7 @@
       <!-- 左侧：题目列表 -->
       <div class="problem-list-panel">
         <div class="problem-list-header">
-          <span>📋 题目列表</span>
+          <span>EX 题目列表</span>
           <span class="problem-count">${PROBLEMS.length} 道</span>
         </div>
         <div class="problem-list-body">
@@ -748,7 +748,7 @@
           return `
           <div class="category" id="star-${cat}">
             <div class="category-header">
-              <span class="cat-icon" style="background:rgba(34,230,255,.1);color:var(--cyan);">${CAT_ICONS[cat]||'📌'}</span>
+              <span class="cat-icon" style="background:rgba(232,168,56,.1);color:var(--cyan);">${CAT_ICONS[cat]||'•'}</span>
               ${cat}
               <span class="cat-count">${items.length} 个知识点</span>
             </div>
@@ -838,8 +838,8 @@
     });
 
     const catIcons = {
-      '基础算法': '⚡', '图论': '🌐', '树论': '🌲', '动态规划': '📊',
-      '数学': '🔢', '字符串': '📝', '数据结构': '🏗️', '考试模板': '📋'
+      '基础算法': 'AL', '图论': 'GR', '树论': 'TR', '动态规划': 'DP',
+      '数学': 'MA', '字符串': 'ST', '数据结构': 'DS', '考试模板': 'EX'
     };
 
     return `
@@ -877,7 +877,7 @@
         <div class="grid g2">
           ${CATS.map(c => `
             <div style="display:flex;align-items:center;gap:12px;padding:12px;background:var(--panel-2);border-radius:var(--radius-sm);border:1px solid var(--border);">
-              <span style="font-size:20px;">${catIcons[c]||'📌'}</span>
+              <span style="font-size:20px;">${catIcons[c]||'•'}</span>
               <div style="flex:1;">
                 <div style="font-size:14px;font-weight:600;color:var(--text);">${c}</div>
                 <div class="bar" style="margin-top:6px;">
@@ -943,8 +943,8 @@
     if (!card) return '<div class="empty">没有闪卡数据</div>';
 
     const catIcons = {
-      '基础算法': '⚡', '图论': '🌐', '树论': '🌲', '动态规划': '📊',
-      '数学': '🔢', '字符串': '📝', '数据结构': '🏗️', '考试模板': '📋'
+      '基础算法': 'AL', '图论': 'GR', '树论': 'TR', '动态规划': 'DP',
+      '数学': 'MA', '字符串': 'ST', '数据结构': 'DS', '考试模板': 'EX'
     };
 
     return `
@@ -962,7 +962,7 @@
         <div class="flashcard ${flashcardState.flipped ? 'flipped' : ''}" onclick="CSP.flipCard()">
           <div class="flashcard-inner">
             <div class="flashcard-front">
-              <span class="cat-label">${catIcons[card.cat]||'📌'} ${card.cat} · ${card.diff}</span>
+              <span class="cat-label">${catIcons[card.cat]||'•'} ${card.cat} · ${card.diff}</span>
               <h3>${card.name}</h3>
               <span style="font-size:12px;color:var(--text-3);margin-top:8px;">点击翻转查看答案</span>
             </div>
@@ -1114,17 +1114,17 @@
 
   function renderGraph() {
     const catIcons = {
-      '基础算法': '⚡', '图论': '🌐', '树论': '🌲', '动态规划': '📊',
-      '数学': '🔢', '字符串': '📝', '数据结构': '🏗️', '考试模板': '📋'
+      '基础算法': 'AL', '图论': 'GR', '树论': 'TR', '动态规划': 'DP',
+      '数学': 'MA', '字符串': 'ST', '数据结构': 'DS', '考试模板': 'EX'
     };
     const catColors = {
-      '基础算法': '#22e6ff', '图论': '#7c5cff', '树论': '#4ade80',
-      '动态规划': '#fbbf24', '数学': '#fb923c', '字符串': '#ff4d6d',
-      '数据结构': '#22d3ee', '考试模板': '#8ea3c0'
+      '基础算法': '#e8a838', '图论': '#d4574a', '树论': '#7da868',
+      '动态规划': '#d4843e', '数学': '#c8902e', '字符串': '#b0453a',
+      '数据结构': '#6a9456', '考试模板': '#9a9488'
     };
 
     // 构建图数据
-    const nodes = [{ id: 'center', label: 'CSP-S', type: 'core', r: 28, color: '#22e6ff', cat: '' }];
+    const nodes = [{ id: 'center', label: 'CSP-S', type: 'core', r: 28, color: '#e8a838', cat: '' }];
     const edges = [];
     CATS.forEach(cat => {
       nodes.push({ id: `cat-${cat}`, label: cat, type: 'cat', r: 18, color: catColors[cat], cat });
@@ -1148,8 +1148,8 @@
           <svg class="starmap-svg" id="starmap-svg" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid meet">
             <defs>
               <radialGradient id="nodeGlow">
-                <stop offset="0%" stop-color="rgba(34,230,255,.4)"/>
-                <stop offset="100%" stop-color="rgba(34,230,255,0)"/>
+                <stop offset="0%" stop-color="rgba(232,168,56,.4)"/>
+                <stop offset="100%" stop-color="rgba(232,168,56,0)"/>
               </radialGradient>
               <filter id="glow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
             </defs>
@@ -1187,7 +1187,7 @@
           return `
           <div class="category" id="star-${cat}">
             <div class="category-header">
-              <span class="cat-icon" style="background:rgba(34,230,255,.1);color:var(--cyan);">${catIcons[cat]||'📌'}</span>
+              <span class="cat-icon" style="background:rgba(232,168,56,.1);color:var(--cyan);">${catIcons[cat]||'•'}</span>
               ${cat}
               <span class="cat-count">${items.length} 个知识点</span>
             </div>
@@ -1200,7 +1200,7 @@
                   <div class="desc">${t.desc}</div>
                   <div class="card-actions">
                     <button class="btn btn-sm btn-primary" onclick="event.stopPropagation();CSP.demoProblem('${vizMod}')">▶ 可视化</button>
-                    <button class="btn btn-sm" onclick="event.stopPropagation();CSP.go('templates#${t.id}')">📋 模板</button>
+                    <button class="btn btn-sm" onclick="event.stopPropagation();CSP.go('templates#${t.id}')">EX 模板</button>
                   </div>
                 </div>
                 `;
@@ -1291,7 +1291,7 @@
               const lbl = n.label.length > 5 ? n.label.substring(0,4)+'…' : n.label;
               nodeHtml += '<g class="starmap-node" data-id="'+n.id+'" transform="translate('+n.x.toFixed(1)+','+n.y.toFixed(1)+')">'+
                 '<circle r="'+n.r+'" fill="'+n.color+'" opacity="0.85" filter="url(#glow)"/>'+
-                '<text class="starmap-label" y="4" font-size="'+fs+'" fill="#0a0f1c" font-weight="700">'+lbl+'</text></g>';
+                '<text class="starmap-label" y="4" font-size="'+fs+'" fill="#1a1a24" font-weight="700">'+lbl+'</text></g>';
             }
           });
           nodesG.innerHTML = nodeHtml;
@@ -1676,7 +1676,7 @@
     return `
     <div class="viz-problem-single">
       <div class="vps-header">
-        <span class="vps-icon">📝</span>
+        <span class="vps-icon">ST</span>
         <span class="vps-title">${p.title}</span>
         <span class="difficulty diff-${p.diff === '入门' ? '1' : p.diff === '普及' ? '2' : p.diff === '提高' ? '3' : '4'}">${p.diff}</span>
       </div>
@@ -1763,7 +1763,7 @@
     <div class="viz-section">
       <div class="viz-controls">
         <input type="number" id="bs-target" value="${target}" placeholder="查找目标" style="width:80px;" onchange="CSP.setBsTarget(this.value)">
-        <button class="btn btn-primary" onclick="CSP.bsSearch()">🔍 查找</button>
+        <button class="btn btn-primary" onclick="CSP.bsSearch()">⌕ 查找</button>
         <button class="btn" onclick="CSP.bsStep()">⏭ 单步</button>
         <button class="btn" onclick="CSP.bsReset()">🔄 重置</button>
         <button class="btn" onclick="CSP.vizShuffle()">🎲 随机数据</button>
@@ -1772,7 +1772,7 @@
         <span>目标: ${target}</span>
         <span>范围: [${vizState.bsLeft}, ${vizState.bsRight}]</span>
         <span>中点: ${vizState.bsMid}</span>
-        <span id="bs-status">${vizState.bsFound ? '✅ 已找到!' : '查找中...'}</span>
+        <span id="bs-status">${vizState.bsFound ? '✓ 已找到!' : '查找中...'}</span>
       </div>
       <div class="bs-array">${items}</div>
       <div class="viz-legend">
@@ -2147,9 +2147,9 @@
 
   function renderVisualizer() {
     const tabs = [
-      { id: 'sort', label: '排序算法', icon: '📊' },
-      { id: 'search', label: '二分查找', icon: '🔍' },
-      { id: 'graph', label: '图遍历', icon: '🌐' },
+      { id: 'sort', label: '排序算法', icon: 'DP' },
+      { id: 'search', label: '二分查找', icon: '⌕' },
+      { id: 'graph', label: '图遍历', icon: 'GR' },
       { id: 'dijkstra', label: '最短路', icon: '🛣️' },
       { id: 'unionfind', label: '并查集', icon: '🔗' },
       { id: 'topo', label: '拓扑排序', icon: '📐' }
@@ -2808,13 +2808,13 @@
 
   function renderDataViz() {
     const tabs = [
-      { id: 'array', label: '数组', icon: '📋' },
+      { id: 'array', label: '数组', icon: 'EX' },
       { id: 'stack', label: '栈', icon: '📚' },
       { id: 'monostack', label: '单调栈', icon: '📉' },
       { id: 'queue', label: '队列', icon: '🚶' },
-      { id: 'monoqueue', label: '单调队列', icon: '📊' },
+      { id: 'monoqueue', label: '单调队列', icon: 'DP' },
       { id: 'list', label: '链表', icon: '🔗' },
-      { id: 'tree', label: '二叉树', icon: '🌲' },
+      { id: 'tree', label: '二叉树', icon: 'TR' },
       { id: 'heap', label: '堆', icon: '⛰️' },
       { id: 'segtree', label: '线段树', icon: '🌿' }
     ];
@@ -3601,7 +3601,7 @@
 
   function renderDPViz() {
     const tabs = [
-      { id: 'lis', label: 'LIS', icon: '📈' },
+      { id: 'lis', label: 'LIS', icon: 'PR' },
       { id: 'lcs', label: 'LCS', icon: '🔗' },
       { id: 'knapsack', label: '01背包', icon: '🎒' },
       { id: 'interval', label: '区间DP', icon: '🪨' }
@@ -3786,8 +3786,8 @@
     })();
     const toast = document.createElement('div');
     toast.className = `toast toast-${type}`;
-    const icons = { info: 'ℹ️', success: '✅', warning: '⚠️', error: '❌' };
-    toast.innerHTML = `<span class="toast-icon">${icons[type] || 'ℹ️'}</span><span class="toast-msg">${msg}</span>`;
+    const icons = { info: 'i', success: '✓', warning: '!', error: '×' };
+    toast.innerHTML = `<span class="toast-icon">${icons[type] || 'i'}</span><span class="toast-msg">${msg}</span>`;
     container.appendChild(toast);
     requestAnimationFrame(() => toast.classList.add('show'));
     setTimeout(() => {
@@ -3922,16 +3922,16 @@
       <div class="panel glass">
         <div class="panel-hd"><span class="dot"></span>模拟考试模式</div>
         <div class="panel-bd" style="text-align:center;padding:40px 20px;">
-          <div style="font-size:48px;margin-bottom:16px;">📝</div>
+          <div style="font-size:48px;margin-bottom:16px;">ST</div>
           <h2 style="color:var(--text);margin-bottom:12px;">CSP-S 模拟考试</h2>
           <p style="color:var(--text-2);max-width:500px;margin:0 auto 24px;">
             随机抽取4道题目，模拟真实考试环境。限时3.5小时，完成后查看评分和建议。
           </p>
           <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:20px;">
             <span class="tag" style="background:var(--panel-2);">📅 限时 3.5 小时</span>
-            <span class="tag" style="background:var(--panel-2);">📋 4 道题目</span>
-            <span class="tag" style="background:var(--panel-2);">🎯 随机抽取</span>
-            <span class="tag" style="background:var(--panel-2);">📊 评分建议</span>
+            <span class="tag" style="background:var(--panel-2);">EX 4 道题目</span>
+            <span class="tag" style="background:var(--panel-2);">EX 随机抽取</span>
+            <span class="tag" style="background:var(--panel-2);">DP 评分建议</span>
           </div>
           <button class="btn btn-primary" style="font-size:16px;padding:12px 32px;" onclick="CSP.startExam()">🚀 开始考试</button>
         </div>
