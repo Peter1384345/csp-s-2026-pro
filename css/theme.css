@@ -297,7 +297,7 @@ body {
 .code-block .copy-btn.copied { background: var(--green); }
 
 /* 语法高亮 */
-.code-block .kw { color: #c678dd; }
+.code-block .kw { color: #e8a838; }
 .code-block .type { color: #e5c07b; }
 .code-block .str { color: #98c379; }
 .code-block .num { color: #d19a66; }
@@ -481,7 +481,7 @@ body.light-theme #particle-canvas { opacity: .2; }
 body.light-theme .navbar { background: rgba(240,244,248,.95); }
 body.light-theme .code-block { background: #eef2f7; }
 body.light-theme .code-block .comment { color: #8a9ab0; }
-body.light-theme .code-block .kw { color: #8b5cf6; }
+body.light-theme .code-block .kw { color: #b45309; }
 body.light-theme .code-block .str { color: #059669; }
 body.light-theme .code-block .num { color: #d97706; }
 body.light-theme .code-block .func { color: #2563eb; }
