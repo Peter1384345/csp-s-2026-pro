@@ -313,8 +313,10 @@
 
     return `
     <div class="hero">
-      <h1>CSP-S 2026 <span>第二轮</span> 备考站<span class="cursor"></span></h1>
-      <p>整合知识点速查 + 代码模板一键复制 + 考试倒计时 + 模拟计时器。覆盖基础算法、图论、树论、动态规划、数学、字符串、数据结构等核心考点，助你高效备考。</p>
+      <div class="hero-left">
+        <h1>CSP-S 2026 <span>第二轮</span> 备考站</h1>
+        <p>整合知识点速查 + 代码模板一键复制 + 考试倒计时 + 模拟计时器。覆盖基础算法、图论、树论、动态规划、数学、字符串、数据结构等核心考点，助你高效备考。</p>
+      </div>
       <div class="hero-stats">
         <div class="hstat"><div class="n">${total}</div><div class="l">代码模板</div></div>
         <div class="hstat"><div class="n">${CATS.length}</div><div class="l">知识分类</div></div>
@@ -334,14 +336,14 @@
 
     <div class="grid g2 mb">
       <!-- 每日一题 -->
-      <div class="panel glass">
-        <div class="panel-hd"><span class="dot"></span>📅 每日一题</div>
+      <div class="panel">
+        <div class="panel-hd"><span class="dot"></span> 每日一题</div>
         <div class="panel-bd">
           <div class="daily-problem">
             <div class="dp-header">
               <span class="tag" style="background:var(--cyan);color:var(--bg);">${daily.cat}</span>
               <span class="difficulty diff-${daily.diff}">${daily.diff}</span>
-              <button class="btn btn-sm" onclick="CSP.toggleFavorite('${daily.id}')">${dailyFav ? '⭐' : '☆'}</button>
+              <button class="btn btn-sm" onclick="CSP.toggleFavorite('${daily.id}')">${dailyFav ? '*' : '☆'}</button>
             </div>
             <h3 style="color:var(--text);margin:8px 0;">${daily.name}</h3>
             <p style="color:var(--text-2);font-size:13px;">${daily.desc}</p>
@@ -351,8 +353,8 @@
       </div>
 
       <!-- 学习热力图 -->
-      <div class="panel glass">
-        <div class="panel-hd"><span class="dot"></span>🔥 学习热力图（近12周）</div>
+      <div class="panel">
+        <div class="panel-hd"><span class="dot"></span> 学习热力图（近12周）</div>
         <div class="panel-bd">
           <div class="heatmap">${heatCells.join('')}</div>
           <div class="heat-legend">
@@ -475,7 +477,7 @@
               <h3>
                 ${t.name}
                 <span class="difficulty diff-${t.diff}">${t.diff}</span>
-                <button class="fav-btn ${isFavorite(t.id) ? 'fav-on' : ''}" onclick="CSP.toggleFavorite('${t.id}')" title="收藏">${isFavorite(t.id) ? '⭐' : '☆'}</button>
+                <button class="fav-btn ${isFavorite(t.id) ? 'fav-on' : ''}" onclick="CSP.toggleFavorite('${t.id}')" title="收藏">${isFavorite(t.id) ? '*' : '☆'}</button>
               </h3>
               <div class="desc">${t.desc}</div>
               <div class="code-block">
@@ -560,32 +562,32 @@
               <span class="tag">${current.year}年</span>
               <span class="tag">${current.cat}</span>
               <span class="difficulty diff-${current.diff}">${current.diff}</span>
-              <button class="fav-btn ${isFavorite(current.id) ? 'fav-on' : ''}" onclick="CSP.toggleFavorite('${current.id}')">${isFavorite(current.id) ? '⭐ 已收藏' : '☆ 收藏'}</button>
+              <button class="fav-btn ${isFavorite(current.id) ? 'fav-on' : ''}" onclick="CSP.toggleFavorite('${current.id}')">${isFavorite(current.id) ? '* 已收藏' : '☆ 收藏'}</button>
             </div>
           </div>
 
           <div class="problem-detail-section">
-            <div class="ps-label">📖 题目描述</div>
+            <div class="ps-label"> 题目描述</div>
             <div class="ps-content">${current.desc}</div>
           </div>
 
           <div class="problem-detail-section">
-            <div class="ps-label">📥 输入格式</div>
+            <div class="ps-label"> 输入格式</div>
             <div class="ps-content">${current.input}</div>
           </div>
 
           <div class="problem-detail-section">
-            <div class="ps-label">📤 输出格式</div>
+            <div class="ps-label"> 输出格式</div>
             <div class="ps-content">${current.output}</div>
           </div>
 
           <div class="problem-detail-section">
-            <div class="ps-label">💡 样例</div>
+            <div class="ps-label"> 样例</div>
             <pre class="ps-sample">${current.sample}</pre>
           </div>
 
           <div class="problem-detail-section">
-            <div class="ps-label">✏️ 参考代码</div>
+            <div class="ps-label"> 参考代码</div>
             <div class="code-block">
               <button class="copy-btn" onclick="CSP.copyProblem(this, '${current.id}')">复制</button>
               <button class="copy-btn" onclick="CSP.downloadProblem('${current.id}')" style="right:60px;">下载</button>
@@ -600,7 +602,7 @@
 
           ${relatedTpl ? `
           <div class="problem-compare">
-            <div class="pc-header">🔗 对比模板：${relatedTpl.name}</div>
+            <div class="pc-header"> 对比模板：${relatedTpl.name}</div>
             <div class="pc-body">
               <div class="pc-col">
                 <div class="pc-title">真题代码</div>
@@ -777,7 +779,7 @@
       if (theme === 'light') {
         document.body.classList.add('light-theme');
         const btn = $('#theme-toggle');
-        if (btn) btn.textContent = '☀️';
+        if (btn) btn.textContent = '';
       }
     } catch (e) {}
   }
@@ -786,7 +788,7 @@
     document.body.classList.toggle('light-theme');
     const isLight = document.body.classList.contains('light-theme');
     const btn = $('#theme-toggle');
-    if (btn) btn.textContent = isLight ? '☀️' : '🌙';
+    if (btn) btn.textContent = isLight ? '' : '';
     try { localStorage.setItem(THEME_KEY, isLight ? 'light' : 'dark'); } catch (e) {}
   }
 
@@ -845,7 +847,7 @@
     return `
     <div class="crumb"><a onclick="CSP.go('home')">首页</a> / <b>学习进度</b></div>
 
-    <div class="panel glass">
+    <div class="panel">
       <div class="panel-hd"><span class="dot"></span>总体进度</div>
       <div class="panel-bd">
         <div style="display:flex;align-items:center;gap:24px;flex-wrap:wrap;">
@@ -950,7 +952,7 @@
     return `
     <div class="crumb"><a onclick="CSP.go('home')">首页</a> / <b>闪卡测验</b></div>
 
-    <div class="panel glass">
+    <div class="panel">
       <div class="panel-hd"><span class="dot"></span>闪卡测验 · 第 ${flashcardState.current + 1} / ${flashcardState.order.length} 张</div>
       <div class="panel-bd" style="display:flex;flex-direction:column;align-items:center;gap:16px;">
         <div style="display:flex;gap:12px;font-size:13px;">
@@ -975,7 +977,7 @@
 
         <div style="display:flex;gap:8px;">
           <button class="btn btn-danger" onclick="CSP.markCard(false)">✗ 不会</button>
-          <button class="btn" onclick="CSP.flipCard()">🔄 翻转</button>
+          <button class="btn" onclick="CSP.flipCard()">↻ 翻转</button>
           <button class="btn btn-primary" onclick="CSP.markCard(true)">✓ 会了</button>
           <button class="btn" onclick="CSP.nextCard()">⏭ 下一张</button>
         </div>
@@ -1027,7 +1029,7 @@
     return `
     <div class="crumb"><a onclick="CSP.go('home')">首页</a> / <b>复杂度速查</b></div>
 
-    <div class="panel glass">
+    <div class="panel">
       <div class="panel-hd"><span class="dot"></span>复杂度图例</div>
       <div class="panel-bd">
         <div style="display:flex;gap:12px;flex-wrap:wrap;">
@@ -1138,11 +1140,11 @@
     return `
     <div class="crumb"><a onclick="CSP.go('home')">首页</a> / <b>知识星图</b></div>
 
-    <div class="panel glass neon-border">
+    <div class="panel">
       <div class="panel-hd"><span class="dot"></span>CSP-S 知识星图 · 力导向交互图</div>
       <div class="panel-bd">
         <p style="color:var(--text-2);font-size:13px;margin-bottom:12px;">
-          🖱️ 拖拽节点重新布局 · 悬停高亮关联边 · <b style="color:var(--cyan);">点击任意知识点查看可视化演示</b> · 滚轮缩放
+           拖拽节点重新布局 · 悬停高亮关联边 · <b style="color:var(--cyan);">点击任意知识点查看可视化演示</b> · 滚轮缩放
         </p>
         <div class="starmap-canvas" id="starmap-canvas">
           <svg class="starmap-svg" id="starmap-svg" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid meet">
@@ -1195,7 +1197,7 @@
               ${items.map(t => {
                 const vizMod = vizFromTpl(t.id) || vizFromCat(cat);
                 return `
-                <div class="knowledge-card neon-border" style="cursor:pointer;">
+                <div class="knowledge-card" style="cursor:pointer;">
                   <h3>${t.name} <span class="difficulty diff-${t.diff}">${t.diff}</span></h3>
                   <div class="desc">${t.desc}</div>
                   <div class="card-actions">
@@ -1682,8 +1684,8 @@
       </div>
       <div class="vps-desc">${p.desc}</div>
       <div class="vps-footer">
-        <span class="vps-algo">🔧 ${p.algo}</span>
-        <span class="vps-hint">💡 ${p.hint}</span>
+        <span class="vps-algo"> ${p.algo}</span>
+        <span class="vps-hint"> ${p.hint}</span>
       </div>
     </div>`;
   }
@@ -1725,8 +1727,8 @@
         <button class="btn btn-primary" onclick="CSP.vizPlay()" ${vizState.playing ? 'disabled' : ''}>▶ 播放</button>
         <button class="btn" onclick="CSP.vizPause()" ${!vizState.playing ? 'disabled' : ''}>⏸ 暂停</button>
         <button class="btn" onclick="CSP.vizStep()">⏭ 单步</button>
-        <button class="btn" onclick="CSP.vizReset()">🔄 重置</button>
-        <button class="btn" onclick="CSP.vizShuffle()">🎲 随机数据</button>
+        <button class="btn" onclick="CSP.vizReset()">↻ 重置</button>
+        <button class="btn" onclick="CSP.vizShuffle()">? 随机数据</button>
         <label style="font-size:12px;color:var(--text-2);">速度</label>
         <input type="range" id="viz-speed" min="50" max="1500" value="${vizState.speed}" onchange="CSP.setVizSpeed(this.value)" style="width:100px;">
       </div>
@@ -1765,8 +1767,8 @@
         <input type="number" id="bs-target" value="${target}" placeholder="查找目标" style="width:80px;" onchange="CSP.setBsTarget(this.value)">
         <button class="btn btn-primary" onclick="CSP.bsSearch()">⌕ 查找</button>
         <button class="btn" onclick="CSP.bsStep()">⏭ 单步</button>
-        <button class="btn" onclick="CSP.bsReset()">🔄 重置</button>
-        <button class="btn" onclick="CSP.vizShuffle()">🎲 随机数据</button>
+        <button class="btn" onclick="CSP.bsReset()">↻ 重置</button>
+        <button class="btn" onclick="CSP.vizShuffle()">? 随机数据</button>
       </div>
       <div class="viz-info">
         <span>目标: ${target}</span>
@@ -1839,7 +1841,7 @@
         </select>
         <button class="btn btn-primary" onclick="CSP.graphTraverseStart()">▶ 开始遍历</button>
         <button class="btn" onclick="CSP.graphTraverseStep()">⏭ 单步</button>
-        <button class="btn" onclick="CSP.graphTraverseReset()">🔄 重置</button>
+        <button class="btn" onclick="CSP.graphTraverseReset()">↻ 重置</button>
       </div>
       <div class="viz-info">
         <span>模式: ${vizState.graphMode === 'bfs' ? 'BFS' : 'DFS'}</span>
@@ -1952,7 +1954,7 @@
         <button class="btn btn-primary" onclick="CSP.dijkstraPlay()" ${dijkstraState.playing ? 'disabled' : ''}>▶ 播放</button>
         <button class="btn" onclick="CSP.dijkstraPause()" ${!dijkstraState.playing ? 'disabled' : ''}>⏸ 暂停</button>
         <button class="btn" onclick="CSP.dijkstraStep()">⏭ 单步</button>
-        <button class="btn" onclick="CSP.dijkstraReset()">🔄 重置</button>
+        <button class="btn" onclick="CSP.dijkstraReset()">↻ 重置</button>
       </div>
       <div class="viz-info">
         <span>步骤: ${dijkstraState.stepIdx + 1} / ${dijkstraState.steps.length || 1}</span>
@@ -2048,7 +2050,7 @@
         <input type="number" id="uf-b" placeholder="元素B" style="width:60px;" min="1" max="7">
         <button class="btn btn-primary" onclick="CSP.ufUnionOp()">合并</button>
         <button class="btn" onclick="CSP.ufFindOp()">查找根</button>
-        <button class="btn" onclick="CSP.ufReset()">🔄 重置</button>
+        <button class="btn" onclick="CSP.ufReset()">↻ 重置</button>
       </div>
       <div class="viz-info">
         <span>连通块数: ${ufState.groups.length}</span>
@@ -2125,7 +2127,7 @@
       <div class="viz-controls">
         <button class="btn btn-primary" onclick="CSP.topoStep()">⏭ 下一步</button>
         <button class="btn" onclick="CSP.topoAuto()">▶ 自动排序</button>
-        <button class="btn" onclick="CSP.topoReset()">🔄 重置</button>
+        <button class="btn" onclick="CSP.topoReset()">↻ 重置</button>
       </div>
       <div class="viz-info">
         <span>队列: [${topoState.queue.map(id => topoState.nodes[id].label).join(', ')}]</span>
@@ -2150,9 +2152,9 @@
       { id: 'sort', label: '排序算法', icon: 'DP' },
       { id: 'search', label: '二分查找', icon: '⌕' },
       { id: 'graph', label: '图遍历', icon: 'GR' },
-      { id: 'dijkstra', label: '最短路', icon: '🛣️' },
-      { id: 'unionfind', label: '并查集', icon: '🔗' },
-      { id: 'topo', label: '拓扑排序', icon: '📐' }
+      { id: 'dijkstra', label: '最短路', icon: '~️' },
+      { id: 'unionfind', label: '并查集', icon: '' },
+      { id: 'topo', label: '拓扑排序', icon: '△' }
     ];
 
     let content = '';
@@ -2170,7 +2172,7 @@
     return `
     <div class="crumb"><a onclick="CSP.go('home')">首页</a> / <b>算法可视化</b></div>
 
-    <div class="panel glass">
+    <div class="panel">
       <div class="panel-hd"><span class="dot"></span>算法可视化 · 交互式动画演示</div>
       <div class="panel-bd">
         <div class="viz-tabs">
@@ -2221,7 +2223,7 @@
         <button class="btn btn-primary" onclick="CSP.arrayInsert()">插入</button>
         <button class="btn btn-danger" onclick="CSP.arrayDelete()">删除</button>
         <button class="btn" onclick="CSP.arrayAccess()">访问</button>
-        <button class="btn" onclick="CSP.arrayRandom()">🎲 随机</button>
+        <button class="btn" onclick="CSP.arrayRandom()">? 随机</button>
       </div>
       <div class="viz-info">
         <span>长度: ${dataVizState.arrayData.length}</span>
@@ -2388,7 +2390,7 @@
       <div class="viz-controls">
         <input type="number" id="tree-input" placeholder="值" style="width:60px;">
         <button class="btn btn-primary" onclick="CSP.treeInsert()">插入</button>
-        <button class="btn" onclick="CSP.treeRandom()">🎲 随机</button>
+        <button class="btn" onclick="CSP.treeRandom()">? 随机</button>
         <button class="btn" onclick="CSP.treeTraverse('pre')">前序</button>
         <button class="btn" onclick="CSP.treeTraverse('in')">中序</button>
         <button class="btn" onclick="CSP.treeTraverse('post')">后序</button>
@@ -2457,7 +2459,7 @@
         <input type="number" id="heap-input" placeholder="值" style="width:60px;">
         <button class="btn btn-primary" onclick="CSP.heapPush()">插入</button>
         <button class="btn btn-danger" onclick="CSP.heapPop()">弹出堆顶</button>
-        <button class="btn" onclick="CSP.heapRandom()">🎲 随机</button>
+        <button class="btn" onclick="CSP.heapRandom()">? 随机</button>
       </div>
       <div class="viz-info">
         <span>堆大小: ${data.length}</span>
@@ -2513,8 +2515,8 @@
     <div class="viz-section">
       <div class="viz-controls">
         <button class="btn btn-primary" onclick="CSP.monoStackStep()">⏭ 下一步</button>
-        <button class="btn" onclick="CSP.monoStackReset()">🔄 重置</button>
-        <button class="btn" onclick="CSP.monoStackRandom()">🎲 随机数据</button>
+        <button class="btn" onclick="CSP.monoStackReset()">↻ 重置</button>
+        <button class="btn" onclick="CSP.monoStackRandom()">? 随机数据</button>
       </div>
       <div class="viz-info">
         <span>当前: ${monoStackState.current >= 0 ? `[${monoStackState.current}]=${arr[monoStackState.current]}` : '就绪'}</span>
@@ -2568,8 +2570,8 @@
         <label style="font-size:12px;color:var(--text-2);">窗口大小</label>
         <input type="number" id="mq-window" value="${w}" min="1" max="${arr.length}" style="width:50px;" onchange="CSP.monoQueueSetWindow(this.value)">
         <button class="btn btn-primary" onclick="CSP.monoQueueStep()">⏭ 下一步</button>
-        <button class="btn" onclick="CSP.monoQueueReset()">🔄 重置</button>
-        <button class="btn" onclick="CSP.monoQueueRandom()">🎲 随机数据</button>
+        <button class="btn" onclick="CSP.monoQueueReset()">↻ 重置</button>
+        <button class="btn" onclick="CSP.monoQueueRandom()">? 随机数据</button>
       </div>
       <div class="viz-info">
         <span>当前: ${monoQueueState.current >= 0 ? `[${monoQueueState.current}]=${arr[monoQueueState.current]}` : '就绪'}</span>
@@ -2663,8 +2665,8 @@
         <input type="number" id="seg-l" placeholder="左端" style="width:50px;" min="0" max="${n-1}">
         <input type="number" id="seg-r" placeholder="右端" style="width:50px;" min="0" max="${n-1}">
         <button class="btn btn-primary" onclick="CSP.segQuery()">区间查询</button>
-        <button class="btn" onclick="CSP.segReset()">🔄 重置</button>
-        <button class="btn" onclick="CSP.segRandom()">🎲 随机数据</button>
+        <button class="btn" onclick="CSP.segReset()">↻ 重置</button>
+        <button class="btn" onclick="CSP.segRandom()">? 随机数据</button>
       </div>
       <div class="viz-info">
         <span>数据长度: ${n}</span>
@@ -2723,8 +2725,8 @@
     <div class="viz-section">
       <div class="viz-controls">
         <button class="btn btn-primary" onclick="CSP.lisStep()">⏭ 下一步</button>
-        <button class="btn" onclick="CSP.lisReset()">🔄 重置</button>
-        <button class="btn" onclick="CSP.lisRandom()">🎲 随机数据</button>
+        <button class="btn" onclick="CSP.lisReset()">↻ 重置</button>
+        <button class="btn" onclick="CSP.lisRandom()">? 随机数据</button>
       </div>
       <div class="viz-info">
         <span>当前: ${dpState.current >= 0 ? `[${dpState.current}]=${arr[dpState.current]}` : '就绪'}</span>
@@ -2781,7 +2783,7 @@
         <label style="font-size:12px;color:var(--text-2);">背包容量</label>
         <input type="number" id="knap-cap" value="${W}" min="1" max="20" style="width:50px;" onchange="CSP.knapSetCap(this.value)">
         <button class="btn btn-primary" onclick="CSP.knapStep()">⏭ 下一步</button>
-        <button class="btn" onclick="CSP.knapReset()">🔄 重置</button>
+        <button class="btn" onclick="CSP.knapReset()">↻ 重置</button>
       </div>
       <div class="viz-info">
         <span>当前物品: ${knapState.current >= 0 ? `物品${knapState.current+1} (w=${items[knapState.current]?.[0]}, v=${items[knapState.current]?.[1]})` : '就绪'}</span>
@@ -2809,14 +2811,14 @@
   function renderDataViz() {
     const tabs = [
       { id: 'array', label: '数组', icon: 'EX' },
-      { id: 'stack', label: '栈', icon: '📚' },
-      { id: 'monostack', label: '单调栈', icon: '📉' },
-      { id: 'queue', label: '队列', icon: '🚶' },
+      { id: 'stack', label: '栈', icon: '' },
+      { id: 'monostack', label: '单调栈', icon: '' },
+      { id: 'queue', label: '队列', icon: '→' },
       { id: 'monoqueue', label: '单调队列', icon: 'DP' },
-      { id: 'list', label: '链表', icon: '🔗' },
+      { id: 'list', label: '链表', icon: '' },
       { id: 'tree', label: '二叉树', icon: 'TR' },
-      { id: 'heap', label: '堆', icon: '⛰️' },
-      { id: 'segtree', label: '线段树', icon: '🌿' }
+      { id: 'heap', label: '堆', icon: '^️' },
+      { id: 'segtree', label: '线段树', icon: '' }
     ];
 
     let content = '';
@@ -2835,7 +2837,7 @@
     return `
     <div class="crumb"><a onclick="CSP.go('home')">首页</a> / <b>数据结构可视化</b></div>
 
-    <div class="panel glass">
+    <div class="panel">
       <div class="panel-hd"><span class="dot"></span>数据结构可视化 · 交互式操作演示</div>
       <div class="panel-bd">
         <div class="viz-tabs">
@@ -3602,9 +3604,9 @@
   function renderDPViz() {
     const tabs = [
       { id: 'lis', label: 'LIS', icon: 'PR' },
-      { id: 'lcs', label: 'LCS', icon: '🔗' },
-      { id: 'knapsack', label: '01背包', icon: '🎒' },
-      { id: 'interval', label: '区间DP', icon: '🪨' }
+      { id: 'lcs', label: 'LCS', icon: '' },
+      { id: 'knapsack', label: '01背包', icon: 'B' },
+      { id: 'interval', label: '区间DP', icon: '#' }
     ];
 
     let content = '';
@@ -3620,7 +3622,7 @@
     return `
     <div class="crumb"><a onclick="CSP.go('home')">首页</a> / <b>DP可视化</b></div>
 
-    <div class="panel glass">
+    <div class="panel">
       <div class="panel-hd"><span class="dot"></span>动态规划可视化 · 交互式推演</div>
       <div class="panel-bd">
         <div class="viz-tabs">
@@ -3919,7 +3921,7 @@
     if (!examState.active || examState.questions.length === 0) {
       return `
       <div class="crumb"><a onclick="CSP.go('home')">首页</a> / <b>模拟考试</b></div>
-      <div class="panel glass">
+      <div class="panel">
         <div class="panel-hd"><span class="dot"></span>模拟考试模式</div>
         <div class="panel-bd" style="text-align:center;padding:40px 20px;">
           <div style="font-size:48px;margin-bottom:16px;">ST</div>
@@ -3928,12 +3930,12 @@
             随机抽取4道题目，模拟真实考试环境。限时3.5小时，完成后查看评分和建议。
           </p>
           <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:20px;">
-            <span class="tag" style="background:var(--panel-2);">📅 限时 3.5 小时</span>
+            <span class="tag" style="background:var(--panel-2);"> 限时 3.5 小时</span>
             <span class="tag" style="background:var(--panel-2);">EX 4 道题目</span>
             <span class="tag" style="background:var(--panel-2);">EX 随机抽取</span>
             <span class="tag" style="background:var(--panel-2);">DP 评分建议</span>
           </div>
-          <button class="btn btn-primary" style="font-size:16px;padding:12px 32px;" onclick="CSP.startExam()">🚀 开始考试</button>
+          <button class="btn btn-primary" style="font-size:16px;padding:12px 32px;" onclick="CSP.startExam()"> 开始考试</button>
         </div>
       </div>`;
     }
@@ -3955,10 +3957,10 @@
       }, 0);
       return `
       <div class="crumb"><a onclick="CSP.go('home')">首页</a> / <b>模拟考试</b></div>
-      <div class="panel glass">
+      <div class="panel">
         <div class="panel-hd"><span class="dot"></span>考试结果</div>
         <div class="panel-bd" style="text-align:center;padding:30px;">
-          <div style="font-size:56px;margin-bottom:8px;">${score >= 80 ? '🏆' : score >= 50 ? '👍' : '💪'}</div>
+          <div style="font-size:56px;margin-bottom:8px;">${score >= 80 ? '' : score >= 50 ? '' : ''}</div>
           <div style="font-size:36px;font-weight:700;color:${score >= 80 ? 'var(--green)' : score >= 50 ? 'var(--cyan)' : 'var(--yellow)'};">${score} / 100</div>
           <p style="color:var(--text-2);margin:12px 0 24px;">
             ${score >= 80 ? '优秀！继续保持！' : score >= 50 ? '不错，还有提升空间' : '继续努力，多练习模板'}
@@ -3976,7 +3978,7 @@
               </div>`;
             }).join('')}
           </div>
-          <button class="btn btn-primary" style="margin-top:24px;" onclick="CSP.resetExam()">🔄 再考一次</button>
+          <button class="btn btn-primary" style="margin-top:24px;" onclick="CSP.resetExam()">↻ 再考一次</button>
         </div>
       </div>`;
     }
@@ -3984,10 +3986,10 @@
     return `
     <div class="crumb"><a onclick="CSP.go('home')">首页</a> / <b>模拟考试</b></div>
     <div class="exam-timer-bar">
-      <span class="exam-timer-text">⏱️ ${mm}:${ss}</span>
+      <span class="exam-timer-text"> ${mm}:${ss}</span>
       <span style="color:var(--text-3);">| 题 ${examState.current + 1}/${examState.questions.length}</span>
     </div>
-    <div class="panel glass">
+    <div class="panel">
       <div class="panel-hd"><span class="dot"></span>T${examState.current + 1}: ${q.name} <span class="difficulty diff-${q.diff}">${q.diff}</span></div>
       <div class="panel-bd">
         <div style="margin-bottom:16px;">
@@ -4049,7 +4051,7 @@
         <input type="text" id="lcs-s1" value="${s1}" style="width:100px;" placeholder="串1">
         <input type="text" id="lcs-s2" value="${s2}" style="width:100px;" placeholder="串2">
         <button class="btn btn-primary" onclick="CSP.lcsStep()">⏭ 下一步</button>
-        <button class="btn" onclick="CSP.lcsReset()">🔄 重置</button>
+        <button class="btn" onclick="CSP.lcsReset()">↻ 重置</button>
         <button class="btn" onclick="CSP.lcsSetStrings()">设置串</button>
       </div>
       <div class="viz-info">
@@ -4140,8 +4142,8 @@
     <div class="viz-section">
       <div class="viz-controls">
         <button class="btn btn-primary" onclick="CSP.idpStep()">⏭ 下一步</button>
-        <button class="btn" onclick="CSP.idpReset()">🔄 重置</button>
-        <button class="btn" onclick="CSP.idpRandom()">🎲 随机数据</button>
+        <button class="btn" onclick="CSP.idpReset()">↻ 重置</button>
+        <button class="btn" onclick="CSP.idpRandom()">? 随机数据</button>
       </div>
       <div class="viz-info">
         <span>石子堆数: ${n}</span>
@@ -4237,7 +4239,7 @@
     notify.id = 'update-notify';
     notify.className = 'update-notify';
     notify.innerHTML = `
-      <span class="un-icon">✨</span>
+      <span class="un-icon">*</span>
       <span class="un-text">发现新版本 <b>v${shortenSha(info.sha)}</b>，点击刷新获取最新内容</span>
       <button class="un-btn" onclick="location.reload()">立即刷新</button>
       <button class="un-close" onclick="this.parentElement.remove()">×</button>
