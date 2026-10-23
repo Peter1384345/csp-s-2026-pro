@@ -560,12 +560,12 @@ body.light-theme .code-block .func { color: #2563eb; }
   color: var(--bg); font-family: var(--mono);
   transition: width .8s ease;
 }
-.bar-fill.c1 { background: var(--panel-2); } /* O(1) */
-.bar-fill.c2 { background: var(--panel-2); } /* O(log n) */
-.bar-fill.c3 { background: var(--panel-2); } /* O(n) */
-.bar-fill.c4 { background: var(--panel-2); } /* O(n log n) */
-.bar-fill.c5 { background: var(--panel-2); } /* O(n^2) */
-.bar-fill.c6 { background: var(--panel-2); } /* O(2^n) */
+.bar-fill.c1 { background: #6a9456; } /* O(1) - 绿 */
+.bar-fill.c2 { background: #8aab6e; } /* O(log n) - 浅绿 */
+.bar-fill.c3 { background: #c8902e; } /* O(n) - 黄褐 */
+.bar-fill.c4 { background: #e8a838; } /* O(n log n) - 琥珀 */
+.bar-fill.c5 { background: #d4574a; } /* O(n^2) - 橙红 */
+.bar-fill.c6 { background: #a0392e; } /* O(2^n) - 深红 */
 
 /* ============================ 知识图谱节点 ============================ */
 .graph-node {
